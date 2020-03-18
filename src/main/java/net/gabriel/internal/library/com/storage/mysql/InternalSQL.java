@@ -100,28 +100,3 @@ public class InternalSQL {
     private void print(String s){ Bukkit.getConsoleSender().sendMessage(s);}
 
 }
-
-class Field {
-    private String fieldName;
-    private String fieldTypeWithParameters;
-
-    public Field(String fieldName, String fieldTypeWithParameters) {
-        this.fieldName = fieldName;
-        this.fieldTypeWithParameters = fieldTypeWithParameters;
-    }
-
-    public HashMap<String, String> getAsHash() {
-        HashMap<String, String> map = new HashMap<>();
-        map.put(fieldName, fieldTypeWithParameters);
-        return map;
-    }
-
-    public String getFieldName() {
-        return this.fieldName;
-    }
-
-    public String getFieldType() {
-        return this.fieldTypeWithParameters;
-    }
-
-}
