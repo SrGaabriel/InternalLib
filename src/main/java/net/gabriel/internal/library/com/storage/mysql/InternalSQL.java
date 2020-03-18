@@ -4,7 +4,6 @@ import org.bukkit.Bukkit;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class InternalSQL {
@@ -97,7 +96,7 @@ public class InternalSQL {
     public boolean isConnected() {
         return con != null;
     }
-    
+
     private void print(String s){ Bukkit.getConsoleSender().sendMessage(s);}
 
 }
