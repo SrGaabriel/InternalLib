@@ -1,6 +1,8 @@
 name: InternalLib
 description: This plugin is a library to make your life easier
 author: xGabriel
-database: false
 main: net.gabriel.internal.library.com.InternalLib
 version: 1.0
+commands:
+  internal-lib:
+    description: This is the plugin's main command
