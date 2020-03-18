@@ -5,11 +5,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class InternalLib extends JavaPlugin {
 
     public void onEnable() {
-        print("§9[InternalLib] §aThe plugin has enabled successfully!");
+        print("§9[InternalLib] §aThe plugin has been successfully enabled!");
     }
 
     public void onDisable() {
-        print("§9[InternalLib] §aThe plugin has disabled successfully!");
+        print("§9[InternalLib] §aThe plugin has been successfully disabled!");
     }
 
     public static InternalLib getInstance() {
