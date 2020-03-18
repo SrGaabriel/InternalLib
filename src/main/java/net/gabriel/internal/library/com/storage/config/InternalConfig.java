@@ -1,4 +1,4 @@
-package net.gabriel.internal.library.com.config;
+package net.gabriel.internal.library.com.storage.config;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -18,9 +18,9 @@ public class InternalConfig {
 
     public InternalConfig(String path, String fileName, Runnable callback, Plugin plugin) {
         if (!fileName.contains(".yml"))
-            fileName = String.valueOf(fileName) + ".yml";
+            fileName = fileName + ".yml";
         this.file = new File(path, fileName);
-        this.fileConfig = (FileConfiguration) YamlConfiguration.loadConfiguration(this.file);
+        this.fileConfig = YamlConfiguration.loadConfiguration(this.file);
         if (!this.file.exists()) {
             this.fileConfig.options().copyDefaults(true);
             callback.run();
@@ -34,9 +34,9 @@ public class InternalConfig {
 
     public InternalConfig(String path, String fileName, Plugin plugin) {
         if (!fileName.contains(".yml"))
-            fileName = String.valueOf(fileName) + ".yml";
+            fileName = fileName + ".yml";
         this.file = new File(path, fileName);
-        this.fileConfig = (FileConfiguration)YamlConfiguration.loadConfiguration(this.file);
+        this.fileConfig = YamlConfiguration.loadConfiguration(this.file);
         if (!this.file.exists()) {
             this.fileConfig.options().copyDefaults(true);
             try {
@@ -60,20 +60,20 @@ public class InternalConfig {
     }
 
     public void setLocation(String path, Location location) {
-        this.fileConfig.set(String.valueOf(path) + ".World", location.getWorld().getName());
-        this.fileConfig.set(String.valueOf(path) + ".X", Double.valueOf(location.getX()));
-        this.fileConfig.set(String.valueOf(path) + ".Y", Double.valueOf(location.getY()));
-        this.fileConfig.set(String.valueOf(path) + ".Z", Double.valueOf(location.getZ()));
-        this.fileConfig.set(String.valueOf(path) + ".Pitch", Float.valueOf(location.getPitch()));
-        this.fileConfig.set(String.valueOf(path) + ".Yaw", Float.valueOf(location.getYaw()));
+        this.fileConfig.set(path + ".World", location.getWorld().getName());
+        this.fileConfig.set(path + ".X", location.getX());
+        this.fileConfig.set(path + ".Y", location.getY());
+        this.fileConfig.set(path + ".Z", location.getZ());
+        this.fileConfig.set(path + ".Pitch", location.getPitch());
+        this.fileConfig.set(path + ".Yaw", location.getYaw());
         saveConfig();
     }
 
     public Location getLocation(String path) {
-        if (this.fileConfig.getString(String.valueOf(path) + ".World") == null)
+        if (this.fileConfig.getString(path + ".World") == null)
             return null;
-        Location location = new Location(Bukkit.getWorld(this.fileConfig.getString(String.valueOf(path) + ".World")), this.fileConfig.getDouble(String.valueOf(path) + ".X"), this.fileConfig.getDouble(String.valueOf(path) + ".Y"), this.fileConfig.getDouble(String.valueOf(path) + ".Z"), (float)this.fileConfig.getDouble(String.valueOf(path) + ".Yaw"), (float)this.fileConfig.getDouble(String.valueOf(path) + ".Pitch"));
-        return location;
+        return new Location(Bukkit.getWorld(this.fileConfig.getString(path + ".World")), this.fileConfig.getDouble(path + ".X"), this.fileConfig.getDouble(path + ".Y"), this.fileConfig.getDouble(path + ".Z"), (float)this.fileConfig.getDouble(path + ".Yaw"), (float)this.fileConfig.getDouble(path + ".Pitch"));
+
     }
 
 }
@@ -150,11 +150,7 @@ class ConfigValue {
         if (!(isSet())) {
             setValue(defaultValue);
         }
-        List<String> returnValue = config.getConfig().getStringList(path);
-        for (String i : returnValue) {
-            i.replace("&", "§");
-        }
-        return returnValue;
+        return config.getConfig().getStringList(path);
     }
 
 }
