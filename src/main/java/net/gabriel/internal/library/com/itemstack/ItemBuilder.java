@@ -32,7 +32,6 @@ public class ItemBuilder {
         itemMeta.setDisplayName(displayname);
     }
 
-
     public ItemStack build() {
         itemStack.setItemMeta(itemMeta);
         return itemStack;
