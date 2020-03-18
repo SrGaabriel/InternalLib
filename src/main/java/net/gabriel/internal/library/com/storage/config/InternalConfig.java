@@ -77,7 +77,7 @@ public class InternalConfig {
 
     }
 
-    public ConfigValue registerValue(ConfigValue arg0) {
+    public void registerValue(ConfigValue arg0) {
         configValues.add(arg0);
     }
 
