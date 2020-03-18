@@ -15,6 +15,7 @@ public class InternalConfig {
     private File file;
 
     private FileConfiguration fileConfig;
+    private List<ConfigValue> configValues;
 
     public InternalConfig(String path, String fileName, Runnable callback, Plugin plugin) {
         if (!fileName.contains(".yml"))
@@ -76,6 +77,14 @@ public class InternalConfig {
 
     }
 
+    public ConfigValue registerValue(ConfigValue arg0) {
+        configValues.add(arg0);
+    }
+
+    public List<ConfigValue> getValues() {
+        return configValues;
+    }
+
 }
 
 class ConfigValue {
@@ -100,6 +109,12 @@ class ConfigValue {
         config.saveConfig();
     }
 
+    private void setIfNotSet() {
+        if (!isSet()) {
+            setValue(defaultValue);
+        }
+    }
+
     public boolean isSet() {
         return config.getConfig().contains(path);
     }
@@ -112,44 +127,83 @@ class ConfigValue {
 
 
     public Object get() {
-        if (!(isSet())) {
-            setValue(defaultValue);
-        }
+        setIfNotSet();
         return config.getConfig().get(path);
     }
 
     public String getString() {
-        if (!(isSet())) {
-            setValue(defaultValue);
-        }
-        return config.getConfig().getString(path).replace("&", "§");
+        setIfNotSet();
+        return config.getConfig().getString(path);
+    }
+
+    public List<?> getObjectList() {
+        setIfNotSet();
+        return config.getConfig().getList(path);
+    }
+
+    public List<Double> getDoubleList() {
+        setIfNotSet();
+        return config.getConfig().getDoubleList(path);
+    }
+
+    public List<Integer> getIntegerList() {
+        setIfNotSet();
+        return config.getConfig().getIntegerList(path);
+    }
+
+    public List<Long> getLongList() {
+        setIfNotSet();
+        return config.getConfig().getLongList(path);
+    }
+
+    public List<Boolean> getBooleanList() {
+        setIfNotSet();
+        return config.getConfig().getBooleanList(path);
+    }
+
+    public List<Byte> getByteList() {
+        setIfNotSet();
+        return config.getConfig().getByteList(path);
+    }
+
+    public List<Short> getShortList() {
+        setIfNotSet();
+        return config.getConfig().getShortList(path);
+    }
+
+    public List<Float> getFloatList() {
+        setIfNotSet();
+        return config.getConfig().getFloatList(path);
+    }
+
+
+    public Double getDouble() {
+        setIfNotSet();
+        return config.getConfig().getDouble(path);
+    }
+
+    public Long getLong() {
+        setIfNotSet();
+        return config.getConfig().getLong(path);
     }
 
     public boolean getBoolean() {
-        if (!(isSet())) {
-            setValue(defaultValue);
-        }
+        setIfNotSet();
         return config.getConfig().getBoolean(path);
     }
 
     public int getInteger() {
-        if (!(isSet())) {
-            setValue(defaultValue);
-        }
+        setIfNotSet();
         return config.getConfig().getInt(path);
     }
 
     public Location getLocation() {
-        if (!(isSet())) {
-            setValue(defaultValue);
-        }
+        setIfNotSet();
         return config.getLocation(path);
     }
 
     public List<String> getStringList() {
-        if (!(isSet())) {
-            setValue(defaultValue);
-        }
+        setIfNotSet();
         return config.getConfig().getStringList(path);
     }
 
