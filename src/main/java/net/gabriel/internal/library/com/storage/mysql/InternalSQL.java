@@ -97,6 +97,7 @@ public class InternalSQL {
     public boolean isConnected() {
         return con != null;
     }
+    
     private void print(String s){ Bukkit.getConsoleSender().sendMessage(s);}
 
 }
