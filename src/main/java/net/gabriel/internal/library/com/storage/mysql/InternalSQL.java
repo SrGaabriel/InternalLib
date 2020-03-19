@@ -87,6 +87,7 @@ public class InternalSQL {
 
     public void disconnect() {
         if (isConnected()) {
+            con.close();
             con = null;
             print("§cConexão MySQL interrompida com sucesso!");
         } else {
