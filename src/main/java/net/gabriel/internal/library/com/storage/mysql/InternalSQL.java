@@ -74,7 +74,7 @@ public class InternalSQL {
                 ResultSet rs = ps.executeQuery();
                 final List<Object> list = new ArrayList<>();
                 while (rs.next()) {
-                    list.add(rs.getObject("field"));
+                    list.add(rs.getObject(field));
                 }
                 return list;
             } catch (SQLException e) {
