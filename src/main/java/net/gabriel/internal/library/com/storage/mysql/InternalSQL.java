@@ -71,6 +71,7 @@ public class InternalSQL {
         if (isConnected()) {
             try {
                 PreparedStatement ps = con.prepareStatement("SELECT * FROM ?");
+                ps.setString(1, table);
                 ResultSet rs = ps.executeQuery();
                 final List<Object> list = new ArrayList<>();
                 while (rs.next()) {
