@@ -14,3 +14,37 @@ This library currently has the following features:
 * Bungee API
 * A in-game refresh plugin command
 * New features are coming soon...
+
+#Developer Portal
+
+To use it in your projects that don't use Maven or Gradle, just download the .jar and put it as a library of your plugins, but, if you're using Maven and Gradle, look at the tutorials below
+
+<h3>Maven<h3>
+
+Inside your pom.xml, put that in:
+```
+  <repository>
+		   <id>jitpack.io</id>
+	     <url>https://jitpack.io</url>
+	 </repository>
+    
+	 <dependency>
+	     <groupId>com.github.xGabrielDEV</groupId>
+	     <artifactId>InternalLib</artifactId>
+	     <version>Tag</version>
+	 </dependency>
+```
+
+<h3>Gradle<h3>
+
+Inside your build.gradle, put that in:
+
+```
+    repositories {
+			maven { url 'https://jitpack.io' }
+		}
+    
+    dependencies {
+	        implementation 'com.github.xGabrielDEV:InternalLib:Tag'
+	  }
+```
