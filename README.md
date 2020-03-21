@@ -22,31 +22,32 @@ To use it in your projects that don't use Maven or Gradle, just download the .ja
 <h3>Maven</h3>
 
 Inside your pom.xml, put that in:
-```
-  <repository>
-		   <id>jitpack.io</id>
-	     <url>https://jitpack.io</url>
-	 </repository>
+```xml;
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
     
-	 <dependency>
-	     <groupId>com.github.xGabrielDEV</groupId>
-	     <artifactId>InternalLib</artifactId>
-	     <version>Tag</version>
-	 </dependency>
+    <dependency>
+        <groupId>com.github.xGabrielDEV</groupId>
+        <artifactId>InternalLib</artifactId>
+        <version>Tag</version>
+    </dependency>
 ```
 
 <h3>Gradle</h3>
 
 Inside your build.gradle, put that in:
 
-```
+```groovy;
     repositories {
-			maven { url 'https://jitpack.io' }
-		}
+        maven { url 'https://jitpack.io' }
+    }
     
     dependencies {
-	        implementation 'com.github.xGabrielDEV:InternalLib:Tag'
-	  }
+        implementation 'com.github.xGabrielDEV:InternalLib:Tag'
+    }
 ```
 
-That's all currently.
+That's all currently. <br>
+I hope so much you enjoy it, and feel free to leave an pull request or post an issue.
