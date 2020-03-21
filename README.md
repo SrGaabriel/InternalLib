@@ -22,7 +22,7 @@ To use it in your projects that don't use Maven or Gradle, just download the .ja
 <h3>Maven</h3>
 
 Inside your pom.xml, put that in:
-```xml;
+```xml
     <repository>
         <id>jitpack.io</id>
         <url>https://jitpack.io</url>
@@ -39,7 +39,7 @@ Inside your pom.xml, put that in:
 
 Inside your build.gradle, put that in:
 
-```groovy;
+```groovy
     repositories {
         maven { url 'https://jitpack.io' }
     }
