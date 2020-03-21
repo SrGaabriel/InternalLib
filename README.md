@@ -15,11 +15,11 @@ This library currently has the following features:
 * A in-game refresh plugin command
 * New features are coming soon...
 
-#Developer Portal
+# Developer Portal
 
 To use it in your projects that don't use Maven or Gradle, just download the .jar and put it as a library of your plugins, but, if you're using Maven and Gradle, look at the tutorials below
 
-<h3>Maven<h3>
+<h3>Maven</h3>
 
 Inside your pom.xml, put that in:
 ```
@@ -35,7 +35,7 @@ Inside your pom.xml, put that in:
 	 </dependency>
 ```
 
-<h3>Gradle<h3>
+<h3>Gradle</h3>
 
 Inside your build.gradle, put that in:
 
@@ -48,3 +48,5 @@ Inside your build.gradle, put that in:
 	        implementation 'com.github.xGabrielDEV:InternalLib:Tag'
 	  }
 ```
+
+That's all currently.
