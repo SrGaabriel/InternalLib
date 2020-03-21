@@ -14,13 +14,14 @@ import java.util.List;
 public class InternalScoreboard {
     private Scoreboard scoreboard;
     private Objective objective;
-
+    private Player player;
     private List<String> lines;
 
     // Constructor with only two parameter, it will generate only the essentials things
-    public InternalScoreboard(String title, List<String> lines) {
+    public InternalScoreboard(String title, List<String> lines, Player player) {
         this.scoreboard = Bukkit.getScoreboardManager().getNewScoreboard();
         this.lines = lines;
+        this.player = player;
         this.objective = scoreboard.registerNewObjective("test", "dummy");
 
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
@@ -54,14 +55,13 @@ public class InternalScoreboard {
         new BukkitRunnable() {
             @Override
             public void run() {
-                for (Player x : Bukkit.getOnlinePlayers()) {
-                    x.setScoreboard(getScoreboard());
-                }
+                showTo();
             }
         }.runTaskTimer(plugin, 20L, delayInTicks);
     }
 
-    public void showTo(Player player) {
+    // On this
+    public void showTo() {
         player.setScoreboard(this.scoreboard);
     }
 
