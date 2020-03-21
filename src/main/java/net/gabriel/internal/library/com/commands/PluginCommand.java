@@ -11,10 +11,12 @@ public class PluginCommand implements CommandExecutor {
             s.sendMessage("§9§lINTERNAL §fThe plugin is currently on, to refresh the config, use /internal-lib refresh");
             return false;
         }
-        if (args[0].equalsIgnoreCase("refresh")) {
-            s.sendMessage("§a§lSUCESS §fThe plugin was refreshed sucessefuly!");
-            return false;
+        switch (args[0]) {
+            case "refresh":
+                s.sendMessage("§a§lSUCCESS §fThe plugin was refreshed sucessefuly!");
+                return false;
         }
+        s.sendMessage("§9§lINTERNAL §fThe plugin is currently on, to refresh the config, use /internal-lib refresh!");
         return false;
     }
 }
