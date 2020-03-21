@@ -2,6 +2,7 @@ package net.gabriel.internal.library.com.scoreboard;
 
 import com.google.common.base.Strings;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -30,7 +31,8 @@ public class InternalScoreboard {
         buildScoreboard();
     }
 
-    private Scoreboard buildScoreboard() {
+    // This method builds the scoreboard, and returns it.
+    public Scoreboard buildScoreboard() {
         int i = lines.size();
         int i2 = 0;
         for (String line : lines) {
@@ -39,9 +41,9 @@ public class InternalScoreboard {
                 --i;
             } else {
                 StringBuilder builder = new StringBuilder();
-                builder.append("§f");
+                builder.append(ChatColor.RESET.toString());
                 for (int ex = 0; ex < i2; ex++) {
-                    builder.append("§f");
+                    builder.append(ChatColor.RESET.toString());
                 }
                 objective.getScore(line).setScore(i);
                 --i;
@@ -60,13 +62,13 @@ public class InternalScoreboard {
         }.runTaskTimer(plugin, 20L, delayInTicks);
     }
 
-    // On this
+    // On this method you can show the scoreboard to the player selected in the constructor.
     public void showTo() {
         player.setScoreboard(this.scoreboard);
     }
 
     public Scoreboard getScoreboard() {
-        return scoreboard;
+        buildScoreboard(); return scoreboard;
     }
 
 }

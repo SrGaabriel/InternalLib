@@ -17,13 +17,14 @@ public class InternalTitle {
         this.subtitle = subtitle;
     }
 
+    // This method build both packets, the title and the subtitle.
     public Packet[] buildPackets() {
         PacketPlayOutTitle packetPlayOutTitle1 = new PacketPlayOutTitle(PacketPlayOutTitle.EnumTitleAction.TITLE, IChatBaseComponent.ChatSerializer.a("{\"text\":\"" + this.title +"\"}"));
         PacketPlayOutTitle packetPlayOutTitle2 = new PacketPlayOutTitle(PacketPlayOutTitle.EnumTitleAction.SUBTITLE, IChatBaseComponent.ChatSerializer.a("{\"text\":\"" + this.subtitle +"\"}"));
         return new Packet[] { packetPlayOutTitle1, packetPlayOutTitle2 };
     }
 
-    public void send(Player player) {
+    public void showTo(Player player) {
         CraftPlayer cp = (CraftPlayer)player;
         cp.getHandle().playerConnection.sendPacket(buildPackets()[0]);
         cp.getHandle().playerConnection.sendPacket(buildPackets()[1]);

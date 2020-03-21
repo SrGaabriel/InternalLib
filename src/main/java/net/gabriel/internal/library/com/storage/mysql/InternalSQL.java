@@ -38,6 +38,7 @@ public class InternalSQL {
         }
     }
 
+    // On this method you can execute any updates you want to.
     public void executeUpdate(String sql) {
         if (isConnected()) {
             try {
@@ -50,6 +51,7 @@ public class InternalSQL {
         }
     }
 
+    // Returns a Object from the selected field.
     public Object getObject(String sql, String field) {
         if (isConnected()) {
             try {
@@ -67,16 +69,20 @@ public class InternalSQL {
         return null;
     }
 
-    public List<Object> getAllValuesFromField(String table, String field) {
+    // This method return all values from a field.
+    public List<Object> getFieldValues(String table, String field) {
         if (isConnected()) {
             try {
                 PreparedStatement ps = con.prepareStatement("SELECT * FROM ?");
                 ps.setString(1, table);
                 ResultSet rs = ps.executeQuery();
                 final List<Object> list = new ArrayList<>();
+                // Get all results from the ResultSet and put then into the list.
                 while (rs.next()) {
                     list.add(rs.getObject(field));
                 }
+                rs.close();
+                ps.close();
                 return list;
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -87,8 +93,13 @@ public class InternalSQL {
 
     public void disconnect() {
         if (isConnected()) {
-            con = null;
-            print("§cConexão MySQL interrompida com sucesso!");
+            try {
+                con.close();
+                con = null;
+                print("§cConexão MySQL interrompida com sucesso!");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         } else {
             print("§cA conexão é inexistente!");
         }

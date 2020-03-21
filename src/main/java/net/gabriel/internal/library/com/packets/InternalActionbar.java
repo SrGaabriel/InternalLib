@@ -13,6 +13,7 @@ public class InternalActionbar {
         this.title = title;
     }
 
+    // This method build the packet and return it.
     public Packet buildPacket() {
         return new PacketPlayOutChat(IChatBaseComponent.ChatSerializer.a("{\"text\":\"" + title + "\"}"), (byte) 2);
     }

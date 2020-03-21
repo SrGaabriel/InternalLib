@@ -16,7 +16,8 @@ public class InternalBossbar {
         this.text = text;
     }
 
-    public void showToPlayer(Player player) {
+    // This method creates an Ender Dragon, set it invisible and then send the packet to the player.
+    public void showTo(Player player) {
         WorldServer world = ((CraftWorld) player.getLocation().getWorld()).getHandle();
         EntityEnderDragon dragon = new EntityEnderDragon(world);
         dragon.setLocation(player.getLocation().getX(), player.getLocation().getY() - 30, player.getLocation().getZ(), 0, 0);
