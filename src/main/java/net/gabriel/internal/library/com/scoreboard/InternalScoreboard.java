@@ -61,7 +61,7 @@ public class InternalScoreboard {
         }.runTaskTimer(plugin, 20L, delayInTicks);
     }
 
-    public void setScoreboard(Player player) {
+    public void showTo(Player player) {
         player.setScoreboard(this.scoreboard);
     }
 
